@@ -6,7 +6,7 @@ from PIL import ImageDraw
 import matplotlib.pyplot as plt
 from PIL import Image
 import numpy as np
-
+import sys
 import argparse
 
 
@@ -77,7 +77,10 @@ img = Image.fromarray(img_array)
 def get_cross():
     image = Image.new('RGB', (30, 30), color=(255, 255, 255))
     image_draw = ImageDraw.Draw(image)
-    image_font = ImageFont.truetype("Arial.ttf", 35)
+    try:
+        image_font = ImageFont.truetype("arial.ttf", 35)
+    except OSError:
+        sys.exit("Erreur: arial.ttf n'est pas installé.")
     image_draw.text((3, -4), f'X', (0, 0, 0), font=image_font)
     return np.array(image)
 
@@ -120,8 +123,11 @@ img = Image.fromarray(img_array)
 
 # Fill args
 draw = ImageDraw.Draw(img)
-font = ImageFont.truetype("Arial.ttf", 22)
-font_small = ImageFont.truetype("Arial.ttf", 14)
+try:
+    font = ImageFont.truetype("arial.ttf", 22)
+    font_small = ImageFont.truetype("arial.ttf", 14)
+except OSError:
+    sys.exit("arial.ttf n'est pas installé")
 draw.text((260, 307), f'{args.first_name} {args.last_name}', (0, 0, 0), font=font)
 draw.text((255, 357), f'{args.birth_date}', (0, 0, 0), font=font)
 draw.text((190, 407), f"{args.birth_city}", (0, 0, 0), font=font)
