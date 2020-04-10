@@ -77,7 +77,7 @@ def get_cross():
         image_font = ImageFont.truetype("Arial.ttf", 35)
     except OSError:
         try:
-            image_font = ImageFont.truetype("arial.ttf", 22)
+            image_font = ImageFont.truetype("arial.ttf", 35)
         except OSError:
             sys.exit("arial.ttf n'est pas installé")
     image_draw.text((3, -4), f'X', (0, 0, 0), font=image_font)
