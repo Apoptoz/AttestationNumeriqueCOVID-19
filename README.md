@@ -1,5 +1,9 @@
-# AttesationNumeriqueCOVID-19
+# AttestationNumeriqueCOVID-19
 Générateur d'attestation numérique dérogatoire pour le confinement dû au Covid-19
+
+## Features
+Il est possible d'enregistrer des profils où seront inscrits les données fixes (nom, adresse, date de naissance,...). Ils seront enregistrés dans le dossier **profils**. 
+Vous pourrez alors sélectionner ces profils et ne remplir que les informations qui changent (date, heure et motifs de la sortie).
 
 ## Installation
 ```bash
@@ -11,6 +15,15 @@ python3 -m virtualenv .venv --python=/usr/bin/python3
 ```
 
 ## Utilisation
+
+### Avec prompt
+```bash
+python register_info.py
+```
+
+Puis suivez les instructions.
+
+### Sans prompt
 ```bash
 .venv/bin/python main.py \
 	--first-name John \
