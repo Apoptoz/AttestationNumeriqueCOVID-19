@@ -25,7 +25,7 @@ Puis suivez les instructions.
 
 ### Sans prompt
 ```bash
-.venv/bin/python main.py \
+.venv/bin/python generate_pdf.py \
 	--first-name John \
 	--last-name Doe \
 	--birth-date 01/01/1900 \
@@ -38,3 +38,8 @@ Puis suivez les instructions.
 ```
 
 L'attestation est ensuite disponible dans le fichier `output.pdf`.
+
+
+## CRÉDITS
+Ceci est un fork de tdopierre qui a créé le générateur pdf.
+https://github.com/tdopierre/AttestationNumeriqueCOVID-19
