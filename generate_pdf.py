@@ -11,7 +11,7 @@ import argparse
 
 
 # Motifs
-# travail-courses-sante-famille-handicap-sport-judiciaire-missions-ecole
+# travail-achats-sante-famille-handicap-sport_animaux-convocation-missions-enfants
 
 FONT = "Arial.ttf"
 SMALL_LETTER_FONT = "arial.ttf"
@@ -37,7 +37,7 @@ def parse_args():
     parser.add_argument("--current-city", required=True, type=str)
     parser.add_argument("--leave-date", required=True, type=str, help="DD/MM/YYYY")
     parser.add_argument("--leave-hour", required=True, type=str, help="HH:MM")
-    parser.add_argument("--motifs", required=True, type=str, help="- delimited: travail-courses-sante-famille-sport-judiciaire-missions")
+    parser.add_argument("--motifs", required=True, type=str, help="- delimited: travail-achats-sante-famille-handicap-sport_animaux-convocation-missions-enfants")
     
     return parser.parse_args()
 
@@ -53,13 +53,12 @@ def get_cross():
     image_font = load_font(35)
     image_draw.text((3, -4), f'x', (0, 0, 0), font=image_font)
     return np.array(image)
-
-# travail-courses-sante-famille-handicap-sport-judiciaire-missions-ecole
+# travail-achats-sante-famille-handicap-sport_animaux-convocation-missions-enfants
 def check_motif_boxes(img_array, motifs):
     cross = get_cross()
     if "travail" in motifs:
         img_array[523:553, 169:199] = cross
-    if "courses" in motifs:
+    if "achats" in motifs:
         img_array[617:647, 169:199] = cross
     if "sante" in motifs:
         img_array[732:762, 169:199] = cross
@@ -67,27 +66,30 @@ def check_motif_boxes(img_array, motifs):
         img_array[817:847, 169:199] = cross
     if "handicap" in motifs:
         img_array[904:934, 169:199] = cross
-    if "sport" in motifs:
+    if "sport_animaux" in motifs:
         img_array[982:1012, 169:199] = cross
-    if "judiciaire" in motifs:
+    if "convocation" in motifs:
         img_array[1114:1144, 169:199] = cross
     if "missions" in motifs:
         img_array[1195:1225, 169:199] = cross
-    if "ecole" in motifs:
+    if "enfants" in motifs:
         img_array[1291:1321, 169:199] = cross
     return img_array
 
 
 # QR CODE
 def draw_QR_code(img_array,first_name, last_name, birth_date, birth_city, address, leave_date, leave_hour, motifs):
+    # Dans le QR code del'attestation officielle, motifs sont séparés par des virgules (suvi d'un espace)
+    motifs = motifs.replace('-', ', ')
+
     # Pas de diacritiques, est-ce normal ? (alors qu'il peut y en avoir dans les cases à remplir)
     # Oui, c'est comme c'est qu'est conçu le QR dans les fichiers sources du repo du gouv
-    qr_text = f"Cree le: {datetime.datetime.now().strftime('%d/%m/%Y a %H:%M')};" \
-              f" Nom: {last_name};" \
-              f" Prenom: {first_name};" \
-              f" Naissance: {birth_date} a {birth_city};" \
-              f" Adresse: {address};" \
-              f" Sortie: {leave_date} a {leave_hour};" \
+    qr_text = f"Cree le: {datetime.datetime.now().strftime('%d/%m/%Y a %H:%M')};\n" \
+              f" Nom: {last_name};\n" \
+              f" Prenom: {first_name};\n" \
+              f" Naissance: {birth_date} a {birth_city};\n" \
+              f" Adresse: {address};\n" \
+              f" Sortie: {leave_date} a {leave_hour};\n" \
               f" Motifs: {motifs}"
 
     qr = qrcode.make(qr_text, border=0)
@@ -160,7 +162,7 @@ if __name__ == '__main__':
 
 
 def fake_generation():
-  motifs = ['travail', 'courses', 'sante', 'famille', 'handicap', 'sport', 'judiciaire', 'missions', 'ecole']
+  motifs = ['travail', 'achats', 'sante', 'famille', 'handicap', 'sport_animaux', 'convocation', 'missions', 'enfants']
   first_name = "AAAAAAA"
   last_name = "BBBBBBBB"
   birth_date = "11/20/2000"

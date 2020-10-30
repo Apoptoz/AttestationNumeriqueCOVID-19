@@ -42,7 +42,7 @@ def parse_profile(profile_file):
 def prompt_other_info(profile_dict):
     print("\nInformations de sortie pour {} {}".format(profile_dict['first_name'],profile_dict['last_name']))
     
-    motif_dict = {"1":"travail", "2":"courses","3":"sante","4":"famille","5":"handicap","6":"sport","7":"judiciaire","8":"missions", "9":"ecole"}
+    motif_dict = {"1":"travail", "2":"achats","3":"sante","4":"famille","5":"handicap","6":"sport_animaux","7":"convocation","8":"missions", "9":"enfants"}
     validation = False
     motif_validation = False
 
@@ -58,7 +58,7 @@ def prompt_other_info(profile_dict):
             time = default_time
     
         while not motif_validation:
-            motifs_string = input("Entrez le ou les motifs de la sortie :\n1 - Travail\n2 - Courses\n3 - Santé\n4 - Famille\n5 - Déplacement Handicap\n6 - Sport\n7 - Judiciaire\n8 - Missions\n9 - Déplacement école ou périscolaire\nEntrez \"1-3-5\" par exemple pour sélectionner plusieurs motifs\n")
+            motifs_string = input("Entrez le ou les motifs de la sortie :\n1 - Travail\n2 - Achats\n3 - Santé\n4 - Famille\n5 - Déplacement Handicap\n6 - Sport ou Animaux\n7 - Convocation Judiciaire ou administrative\n8 - Mission d'intérêt général\n9 - Déplacement école ou périscolaire\nEntrez \"1-3-5\" par exemple pour sélectionner plusieurs motifs\n")
             motifs = ""
             
             motif_validation = True # True unless one motif is not in motif_dict
