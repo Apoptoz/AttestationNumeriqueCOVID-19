@@ -40,7 +40,7 @@ Puis suivez les instructions.
 	--current-city Paname \
 	--leave-date 06/04/2020 \
 	--leave-hour 15:00 \
-	--motifs travail-courses-sante-famille-sport-judiciaire-missions
+	--motifs travail-achats-sante-famille-handicap-sport_animaux-convocation-missions-enfants
 ```
 
 L'attestation est ensuite disponible dans le fichier `output.pdf`.
