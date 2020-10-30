@@ -143,6 +143,17 @@ def merge_pdfs():
     pdf1 = PdfFileReader('output-1.pdf')
     pdf2 = PdfFileReader('output-2.pdf')
     writer = PdfFileWriter()
+
+    writer.addMetadata({
+        '/Title':'COVID-19 - Déclaration de déplacement',
+        '/Subject':'Attestation de déplacement dérogatoire',
+        #'/Keywords': 'covid19','covid-19','attestation','déclaration','déplacement','officielle','gouvernement',
+        '/Keywords': 'covid19 covid-19 attestation déclaration déplacement officielle gouvernement',
+        '/Producer':'DNUM/SDIT',
+        '/Creator':'',
+        '/Author':'Ministère de l\'intérieur'
+    })
+
     writer.addPage(pdf1.getPage(0))
     writer.addPage(pdf2.getPage(0))
     writer.write(open("output.pdf", "wb"))

@@ -54,7 +54,6 @@ Deux motifs ont été ajouté :
 Le texte de l'attestation à quelque peut changé. Cf la branche ancien-confinement pour retrouver l'ancienne attestation (input-page1.png)
 
 J'ai remarqué dans le code du gouv que le pdf possédait des metadata. Je ne sais pas si c'était le cas auparavant.
-Je n'ai pas encore ajouté les metadata du gouv.
 ``` javascript
   // set pdf metadata
   pdfDoc.setTitle('COVID-19 - Déclaration de déplacement')
@@ -73,6 +72,54 @@ Je n'ai pas encore ajouté les metadata du gouv.
   pdfDoc.setAuthor("Ministère de l'intérieur")
 ```
 
+```
+> pdfinfo attestation_officielle.pdf
+Title:          COVID-19 - Déclaration de déplacement
+Subject:        Attestation de déplacement dérogatoire
+Keywords:       covid19 covid-19 attestation déclaration déplacement officielle gouvernement
+Author:         Ministère de l'intérieur
+Creator:        
+Producer:       DNUM/SDIT
+CreationDate:   Thu Oct 29 18:27:05 2020 CET
+ModDate:        Fri Oct 30 09:44:03 2020 CET
+Tagged:         no
+UserProperties: no
+Suspects:       no
+Form:           none
+JavaScript:     no
+Pages:          2
+Encrypted:      no
+Page size:      595 x 842 pts (A4)
+Page rot:       0
+File size:      42052 bytes
+Optimized:      no
+PDF version:    1.7
+```
+
+```
+> pdfinfo attestation_generee_par_ce_logiciel.pdf
+Title:          COVID-19 - Déclaration de déplacement
+Subject:        Attestation de déplacement dérogatoire
+Keywords:       covid19 covid-19 attestation déclaration déplacement officielle gouvernement
+Author:         Ministère de l'intérieur
+Creator:        
+Producer:       DNUM/SDIT
+Tagged:         no
+UserProperties: no
+Suspects:       no
+Form:           none
+JavaScript:     no
+Pages:          2
+Encrypted:      no
+Page size:      892.8 x 1263.6 pts
+Page rot:       0
+File size:      335004 bytes
+Optimized:      no
+PDF version:    1.3
+```
+
+Il manque donc les metadata `CreationDate` & `ModDate`, et la version du PDF, la taille & le poids sont différents.
+
 La police utilisée pour remplir le formulaire est Helvetica sur le générateur du gouvernement. J'ai gardé Arial pour ce programme, vous pouvez faire un fork et changer dans `generate_pdf.py`:
 
 ``` python
@@ -87,7 +134,7 @@ SMALL_LETTER_FONT = "helvetica.ttf"
 
 - Je vais rajouter dans le prompt une vérification pour "la ville où vous êtes actuellement".
 - J'aimerai aussi pouvoir ajouter un serveur mail afin de pouvoir envoyer directement l'output plutôt que de devoir se l'envoyer à chaque fois...
-- Rajouter les metadata
+
 
 
 ## CRÉDITS
