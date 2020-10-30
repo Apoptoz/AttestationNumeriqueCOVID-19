@@ -1,4 +1,4 @@
-# Générateur d'attestation numérique python pour le confinemnt de fin 2020
+# Générateur d'attestation numérique python pour le confinement de fin 2020
 
 Ceci est un programme CLI (command line interface) qui permet de générer des attestations numériques.
 
