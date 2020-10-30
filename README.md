@@ -1,5 +1,11 @@
-# AttestationNumeriqueCOVID-19
-Générateur d'attestation numérique dérogatoire pour le confinement dû au Covid-19
+# Générateur d'attestation numérique python pour le confinemnt de fin 2020
+
+Ceci est un programme CLI (command line interface) qui permet de générer des attestations numériques.
+
+## Disclaimer
+
+Ce générateur n'est pas officiel et pourrait contenir des données obsolètes ou incorrectes.
+Vous pouvez me faire part de différences que vous voyez avec l'officiel.
 
 ## Features
 Il est possible d'enregistrer des profils où seront inscrits les données fixes (nom, adresse, date de naissance,...). Ils seront enregistrés dans le dossier **profils**. 
